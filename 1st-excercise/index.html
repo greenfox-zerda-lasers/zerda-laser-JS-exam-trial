@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Greenfox questionnaire</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="container">
+      <h1>Greenfox questionnaire</h1>
+      <p>
+        Thank you for visiting our website! To get early access to our planned projects, please fill in the following quick questionnaire.
+      </p>
+      <div id="questions">
+        <form>
+          <textarea rows="4" cols="55">Describe your experience with Green Fox Academy so far</textarea><br>
+
+          <label>
+            On a scale of 1 to 10, how likely are you to recommend Green Fox Academy to a friend?<br>
+            <select id="scale">
+              <option disabled selected value="0">-- Please choose! --</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </label><br>
+
+          <label>
+            Your email address:
+            <span>
+              <input type="text" id="email">
+            </span>
+          </label><br>
+
+          <button type="button" id="submit">Submit</button>
+        </form>
+        <div id="placeholder"></div>
+
+    </div><!--questions-->
+        <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
