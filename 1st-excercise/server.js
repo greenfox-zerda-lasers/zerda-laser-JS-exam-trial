@@ -4,7 +4,6 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
-var submit = document.getElementById("submit");
 
 // submit.addEventListener("click", function(){
 //   var ourRequest = new XMLHttpRequest();
@@ -31,10 +30,33 @@ con.connect(function(err){
 
 var app = express();
 app.use(bodyParser.json());
-app.use(express.static('client'));
+app.use(express.static('client'));  //static fájlok lekérdezéséhez!!!
+
 
 app.get('/', function(req, res) {
   res.sendfile('./index.html');
 });
 
-app.post('/exam', function(req, res) {
+app.post('/exam', function(req, res) {  //postba kerül a validator!!!
+  console.log(req.body); // { shift: 3, text: 'oruhp lsvxp groru vlw' }   //req.body csak post esetében
+  var scale = parseInt(req.body.scale);
+  var text = req.body.text;
+  var email = req.body.email;
+
+  // res.send(responseO);
+  con.query('SELECT * FROM projects', function (err, rows) {
+    if(!err) {
+      var rowsTextOnly = rows.map(function (row) {
+        return row.project_name;
+      }); // ['alma', 'beka']
+      res.send({
+        "status": "ok",
+        "projects": rowsTextOnly
+      });
+    }
+  });
+});
+
+
+
+app.listen(3000);
